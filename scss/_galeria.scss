@@ -1,0 +1,38 @@
+.card {
+    @include card-galeria;
+}
+
+.card-img {
+    height: 300px;
+    width: 500px;
+}
+
+.video-galeria {
+    @include video-gal;
+}
+
+@media (min-width: $tablet) {
+    .card {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-galeria {
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        gap: 30px;
+        margin: 50px;
+    }
+}
+
+@media (min-width: $desktop) {
+    .card {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 25px;
+    }
+
+    .video-separacion {
+        padding: 0.5rem;
+    }
+}

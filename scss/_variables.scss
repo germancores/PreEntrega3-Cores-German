@@ -1,0 +1,109 @@
+/*Paleta de colores*/
+$color-primario: rgba(120, 198, 195, 255);
+$color-secundario: rgb(255, 255, 255);
+
+/*Tamaño de fuentes e iconos*/
+$fuente-grande: xx-large;
+$fuente-mediana: x-large;
+$logo-grande: 50%;
+
+/*Tamaño de resolucion de pantallas*/
+$tablet: 768px;
+$desktop: 992px;
+
+/*Fuente*/
+$fuente-principal: 'Bayon', sans-serif;
+
+/*MIXINS*/
+@mixin flex-columna {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border: none;
+    justify-items: center;
+    background-color: rgba(120, 198, 195, 255)
+}
+
+@mixin flex-multimedia {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px;
+
+}
+
+@mixin grid-footer {
+    display: grid;
+    grid-template-areas:"footer1 footer2";
+    margin-top: 60px;
+        .footer1 {
+            grid-area: footer1;
+            margin-left: 10px;
+            }
+        
+        .footer2 {
+            grid-area: footer2;
+            margin-right: 10px;
+            }
+        .tamaño-logo {
+            width: 100px;
+            }
+}
+
+@mixin img-banner {
+    height: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@mixin grid-areas {
+    display: grid;
+    grid-template-areas:
+        "parrafo1 video"
+        "parrafo2 video";
+    grid-template-rows: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    .parrafo1 {
+        grid-area: parrafo1;
+    }
+    
+    .parrafo2 {
+        grid-area: parrafo2;
+        text-align: left;
+    }
+
+    .video {
+        grid-area: video;
+        align-self: center;
+    }
+}
+
+@mixin card-galeria {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    border: none;
+    justify-items: center;
+    background-color: rgba(120, 198, 195, 255)
+}
+
+@mixin video-gal {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px;
+}
+
+@mixin contacto-flex {
+    display: flex;
+    flex-flow: column;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin: 0 auto;
+}

@@ -1,0 +1,171 @@
+@charset "UTF-8";
+/*Paleta de colores*/
+/*Tamaño de fuentes e iconos*/
+/*Tamaño de resolucion de pantallas*/
+/*Fuente*/
+/*MIXINS*/
+header {
+  z-index: 1;
+  width: 100%;
+}
+
+body, header {
+  font-family: "Bayon", sans-serif;
+  background-color: rgb(120, 198, 195);
+  color: rgb(255, 255, 255);
+}
+
+.navbar-brand, .navbar-toggler .fondo-nav .card {
+  background-color: rgb(120, 198, 195);
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h1, h3 {
+  font-size: xx-large;
+}
+
+h2, h3, a, .nav-link {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.navbar-brand {
+  width: 50%;
+}
+
+.navbar-toggler {
+  border-color: rgb(255, 255, 255);
+}
+
+.navbar-toggler-icon {
+  background: url("https://api.iconify.design/mdi/hamburger-menu.svg?color=white") no-repeat center center/contain;
+}
+
+.navbar-nav {
+  font-size: x-large;
+}
+
+.footer-enlinea {
+  display: grid;
+  grid-template-areas: "footer1 footer2";
+  margin-top: 60px;
+}
+.footer-enlinea .footer1 {
+  grid-area: footer1;
+  margin-left: 10px;
+}
+.footer-enlinea .footer2 {
+  grid-area: footer2;
+  margin-right: 10px;
+}
+.footer-enlinea .tamaño-logo {
+  width: 100px;
+}
+
+.video-tamaño {
+  width: 100%;
+  height: 315px;
+}
+
+img {
+  max-width: 100%;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+@media (min-width: 992px) {
+  .tamaño-img img {
+    height: 900px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .video-derecha {
+    display: grid;
+    grid-template-areas: "parrafo1 video" "parrafo2 video";
+    grid-template-rows: 2fr 3fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .video-derecha .parrafo1 {
+    grid-area: parrafo1;
+  }
+  .video-derecha .parrafo2 {
+    grid-area: parrafo2;
+    text-align: left;
+  }
+  .video-derecha .video {
+    grid-area: video;
+    align-self: center;
+  }
+}
+.video-centro {
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  border: none;
+  justify-items: center;
+  background-color: rgb(120, 198, 195);
+}
+
+.card-img {
+  height: 300px;
+  width: 500px;
+}
+
+.video-galeria, .discografia {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .video-galeria, .discografia {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px;
+  }
+}
+@media (min-width: 992px) {
+  .card {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 25px;
+  }
+  .video-separacion {
+    padding: 0.5rem;
+  }
+}
+.mapa {
+  text-align: center;
+}
+
+.centrar-contacto {
+  display: flex;
+  flex-flow: column;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=styles.css.map */

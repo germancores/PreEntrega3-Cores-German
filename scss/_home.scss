@@ -1,0 +1,13 @@
+@media (min-width: $desktop) {
+    .tamaño-img img {
+        @include img-banner;
+    }
+
+    .video-derecha {
+        @include grid-areas;
+    }
+}
+
+.video-centro {
+    text-align: center;
+}
