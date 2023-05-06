@@ -105,7 +105,5 @@ $fuente-principal: 'Bayon', sans-serif;
 @mixin contacto-flex {
     display: flex;
     flex-flow: column;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin: 0 auto;
+    margin: 0 auto;  
 }
