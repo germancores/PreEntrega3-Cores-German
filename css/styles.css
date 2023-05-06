@@ -121,6 +121,10 @@ iframe {
   background-color: rgb(120, 198, 195);
 }
 
+.card-img:hover {
+  transform: scale(1.2);
+}
+
 .card-img {
   height: 300px;
   width: 500px;

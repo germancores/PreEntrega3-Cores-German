@@ -2,6 +2,10 @@
     @include card-galeria;
 }
 
+.card-img:hover {
+    transform: scale(1.2);
+}
+
 .card-img {
     height: 300px;
     width: 500px;
