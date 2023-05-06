@@ -17,7 +17,8 @@ header {
 }
 
 .navbar-brand,
-.navbar-toggler .fondo-nav .card {
+.navbar-toggler .fondo-nav .card,
+.navbar-toggler .fondo-nav .discografia {
   background-color: rgb(120, 198, 195);
 }
 
@@ -118,7 +119,7 @@ iframe {
   text-align: center;
 }
 
-.card {
+.card, .discografia {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,7 +138,7 @@ iframe {
   width: 500px;
 }
 
-.video-galeria, .discografia {
+.video-galeria {
   display: flex;
   flex-flow: wrap;
   justify-content: center;
@@ -146,11 +147,11 @@ iframe {
 }
 
 @media (min-width: 768px) {
-  .card {
+  .card, .discografia {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-  .video-galeria, .discografia {
+  .video-galeria {
     display: flex;
     flex-flow: row;
     justify-content: center;
@@ -159,7 +160,7 @@ iframe {
   }
 }
 @media (min-width: 992px) {
-  .card {
+  .card, .discografia {
     grid-template-columns: repeat(3, 1fr);
     row-gap: 25px;
   }
