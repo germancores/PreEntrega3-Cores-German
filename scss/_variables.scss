@@ -36,20 +36,22 @@ $fuente-principal: 'Bayon', sans-serif;
 
 @mixin grid-footer {
     display: grid;
-    grid-template-areas:"footer1 footer2";
+    grid-template-areas: "footer1 footer2";
     margin-top: 60px;
-        .footer1 {
-            grid-area: footer1;
-            margin-left: 10px;
-            }
-        
-        .footer2 {
-            grid-area: footer2;
-            margin-right: 10px;
-            }
-        .tamaño-logo {
-            width: 100px;
-            }
+
+    .footer1 {
+        grid-area: footer1;
+        margin-left: 10px;
+    }
+
+    .footer2 {
+        grid-area: footer2;
+        margin-right: 10px;
+    }
+
+    .tamaño-logo {
+        width: 100px;
+    }
 
 
 }
@@ -72,7 +74,7 @@ $fuente-principal: 'Bayon', sans-serif;
     .parrafo1 {
         grid-area: parrafo1;
     }
-    
+
     .parrafo2 {
         grid-area: parrafo2;
         text-align: left;
@@ -105,5 +107,5 @@ $fuente-principal: 'Bayon', sans-serif;
 @mixin contacto-flex {
     display: flex;
     flex-flow: column;
-    margin: 0 auto;  
+    margin: 0 auto;
 }

@@ -3,26 +3,33 @@ header {
     width: 100%;
 }
 
-body, header {
+body,
+header {
     font-family: $fuente-principal;
     background-color: $color-primario;
     color: $color-secundario;
 
 }
 
-.navbar-brand,.navbar-toggler .fondo-nav .card {
+.navbar-brand,
+.navbar-toggler .fondo-nav .card {
     background-color: $color-primario;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
 }
 
-h1, h3 {
+h1,
+h3 {
     font-size: $fuente-grande;
 }
 
-h2, h3, a, .nav-link {
+h2,
+h3,
+a,
+.nav-link {
     color: $color-secundario;
     text-decoration: none;
 }
@@ -33,7 +40,7 @@ ul {
 
 .navbar-brand {
     width: $logo-grande;
-    }
+}
 
 .navbar-toggler {
     border-color: $color-secundario;
@@ -48,7 +55,7 @@ ul {
 }
 
 .footer-enlinea {
-@include grid-footer;
+    @include grid-footer;
 }
 
 .video-tamaño {
