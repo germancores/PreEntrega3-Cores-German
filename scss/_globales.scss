@@ -11,6 +11,28 @@ header {
 
 }
 
+.navbar {
+    nav ul {
+        list-style: none;
+    }
+
+    .navbar-brand {
+        width: $logo-grande;
+    }
+
+    .navbar-toggler {
+        border-color: $color-secundario;
+    }
+
+    .navbar-toggler-icon {
+        background: url('https://api.iconify.design/mdi/hamburger-menu.svg?color=white') no-repeat center center / contain;
+    }
+
+    .navbar-nav {
+        font-size: $fuente-mediana;
+    }
+}
+
 .navbar-brand,
 .navbar-toggler .fondo-nav .card {
     background-color: $color-primario;
@@ -32,26 +54,6 @@ a,
 .nav-link {
     color: $color-secundario;
     text-decoration: none;
-}
-
-nav ul {
-    list-style: none;
-}
-
-.navbar-brand {
-    width: $logo-grande;
-}
-
-.navbar-toggler {
-    border-color: $color-secundario;
-}
-
-.navbar-toggler-icon {
-    background: url('https://api.iconify.design/mdi/hamburger-menu.svg?color=white') no-repeat center center / contain;
-}
-
-.navbar-nav {
-    font-size: $fuente-mediana;
 }
 
 .footer-enlinea {
