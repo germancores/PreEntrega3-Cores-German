@@ -12,7 +12,7 @@ function validarFormulario() {
             alert("Por favor, ingrese su nombre.");
         }
         // Se valida que el apellido no esté vacío
-        if (!apellido || apellido.trim() === " ") {
+       else if (!apellido || apellido.trim() === " ") {
             alert("Por favor, ingrese su apellido.");
         }
         // Se Valida que el email sea válido
