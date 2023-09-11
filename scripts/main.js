@@ -11,6 +11,7 @@ function validarFormulario() {
         if (!nombre || nombre.trim() === " ") {
             alert("Por favor, ingrese su nombre.");
         }
+        // Se valida que el apellido no esté vacío
         if (!apellido || apellido.trim() === " ") {
             alert("Por favor, ingrese su apellido.");
         }
