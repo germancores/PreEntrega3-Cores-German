@@ -17,18 +17,10 @@ Este es un script JavaScript simple que permite a un usuario completar un formul
 
 5. Cuando todos los campos son válidos, se muestra una alerta de éxito y el formulario se considera válido.
 
-## Cómo usar
+## Futuras ideas para el proyecto final:
 
-1. Descarga el archivo `formulario.js` y vincúlalo a tu archivo HTML donde desees usarlo.
+1. Pienso hacer un log in y un sign in en el index de la pagina donde puedas ingresar nombre de usuario, contraseña y correo electronico. Esos datos quedaran guardados y te los pedira la pagina para iniciar sesion.
 
-2. Asegúrate de que el HTML tenga un botón o algún otro disparador para llamar a la función `validarFormulario()` cuando el usuario desee validar el formulario.
+2. Quiero darle mayor interactividad a la galeria de imagenes y videos de Gorillaz. Pensaba en hacer algo para que al hacer click en la miniatura de las imagenes o videos, se maximice a un mayor tamaño en la pantalla (como suelen tener muchas paginas de esa indole).
 
-3. Asegúrate de que el código HTML contenga un formulario con los campos necesarios (nombre, apellido, correo electrónico, mensaje).
-
-4. Cuando el usuario haga clic en el botón o activador para validar el formulario, la función `validarFormulario()` se ejecutará y guiará al usuario a través del proceso de ingreso de datos y validación.
-
-## Contribuciones y mejoras
-
-Siéntete libre de contribuir y mejorar este código. Puedes agregar características adicionales o mejorar la interfaz de usuario según tus necesidades.
-
-¡Disfruta de tu formulario de contacto con validación en JavaScript!
+3. Todavia nose que hacer con la seccion de discografia al ser listas de spotify linkeadas pero vere que opciones tengo a medida que avancemos con las clases
