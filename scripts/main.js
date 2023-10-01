@@ -1,34 +1,67 @@
-function validarFormulario() {
-    let formularioValido = false;
+class Formulario {
+    constructor() {
+        this.nombre = "";
+        this.apellido = "";
+        this.email = "";
+        this.mensaje = "";
+    }
 
-    while (!formularioValido) {
-        let nombre = prompt("Ingrese su nombre:");
-        let apellido = prompt("Ingrese su apellido:");
-        let email = prompt("Ingrese su correo electrónico:");
-        let mensaje = prompt("Ingrese su mensaje:");
+    pedirDatos() {
+        this.nombre = prompt("Ingrese su nombre:");
+        this.apellido = prompt("Ingrese su apellido:");
+        this.email = prompt("Ingrese su correo electrónico:");
+        this.mensaje = prompt("Ingrese su mensaje:");
+    }
 
-        // Se Valida que el nombre no esté vacío
-        if (!nombre || nombre.trim() === " ") {
+    validar() {
+        if (!this.nombre || this.nombre.trim() === "") {
             alert("Por favor, ingrese su nombre.");
+            return false;
         }
-        // Se valida que el apellido no esté vacío
-       else if (!apellido || apellido.trim() === " ") {
+        if (!this.apellido || this.apellido.trim() === "") {
             alert("Por favor, ingrese su apellido.");
+            return false;
         }
-        // Se Valida que el email sea válido
-        else if (!email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
+        if (!this.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
             alert("Por favor, ingrese un correo electrónico válido.");
+            return false;
         }
-        // Se validar que el mensaje no esté vacío
-        else if (!mensaje || mensaje.trim() === " ") {
+        if (!this.mensaje || this.mensaje.trim() === "") {
             alert("Por favor, ingrese un mensaje.");
+            return false;
         }
-        // Si todo está correcto, puedes enviar el formulario
-        else {
-            formularioValido = true;
-            alert("Formulario enviado correctamente.");
-        }
+        return true;
     }
 }
 
-validarFormulario();
+let cantidad = prompt('Ingresar cantidad de formularios a realizar.')
+function crearYValidarFormularios(cantidad) {
+    const formularios = Array.from({ length: cantidad }, () => new Formulario());
+
+    return formularios.map((formulario, index) => {
+        formulario.pedirDatos();
+
+        if (formulario.validar()) {
+            return {
+                numero: index + 1,
+                nombre: formulario.nombre,
+                apellido: formulario.apellido,
+                email: formulario.email,
+                mensaje: formulario.mensaje,
+            };
+        }
+        return null;
+    }).filter(formulario => formulario !== null);
+}
+
+const formulariosValidos = crearYValidarFormularios(cantidad);
+
+console.log("Formularios válidos:");
+formulariosValidos.forEach(formulario => {
+    console.log(`Formulario ${formulario.numero}:`);
+    console.log("Nombre:", formulario.nombre);
+    console.log("Apellido:", formulario.apellido);
+    console.log("Correo Electrónico:", formulario.email);
+    console.log("Mensaje:", formulario.mensaje);
+    console.log("-------------------------");
+});
