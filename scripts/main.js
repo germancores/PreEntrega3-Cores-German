@@ -65,37 +65,3 @@ const validarFormulario = (
     actualizarListaEnStorage(formularios);
     return true;
 }
-
-
-
-// let cantidad = prompt('Ingresar cantidad de formularios a realizar.')
-// function crearYValidarFormularios(cantidad) {
-//     const formularios = Array.from({ length: cantidad }, () => new Formulario());
-
-//     return formularios.map((formulario, index) => {
-//         formulario.pedirDatos();
-
-//         if (formulario.validar()) {
-//             return {
-//                 numero: index + 1,
-//                 nombre: formulario.nombre,
-//                 apellido: formulario.apellido,
-//                 email: formulario.email,
-//                 mensaje: formulario.mensaje,
-//             };
-//         }
-//         return null;
-//     }).filter(formulario => formulario !== null);
-// }
-
-// const formulariosValidos = crearYValidarFormularios(cantidad);
-
-// console.log("Formularios válidos:");
-// formulariosValidos.forEach(formulario => {
-//     console.log(`Formulario ${formulario.numero}:`);
-//     console.log("Nombre:", formulario.nombre);
-//     console.log("Apellido:", formulario.apellido);
-//     console.log("Correo Electrónico:", formulario.email);
-//     console.log("Mensaje:", formulario.mensaje);
-//     console.log("-------------------------");
-// });
