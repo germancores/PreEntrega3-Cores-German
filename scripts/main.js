@@ -30,10 +30,27 @@ miFormulario.addEventListener("submit", (e) => {
 
     if (validarFormulario(nombre, apellido, email, comentario)) {
         miFormulario.reset();
-        alert("Formulario enviado satisfactoriamente!");
-    } else {
-        alert("Verifica los inputs ingresados!");
-    }
+        Swal.fire({
+            title: "¿Seguro que desea enviar este formulario?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Si, enviar",
+            denyButtonText: `No mejor no`
+          }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "El formulario se ha enviado con exito",
+                    icon: "success"
+                });
+            } else if (result.isDenied) {
+                Swal.fire({
+                    title: "¡El formulario no se ha enviado!",
+                    text: "Asegurate de ingresar los inputs correctamente",
+                    icon: "error"
+                });
+            }
+          });
+}
 
 });
 
@@ -44,19 +61,31 @@ const validarFormulario = (
     comentario = ""
 ) => {
     if (!nombre || nombre.trim() === "") {
-        alert("Por favor, ingrese su nombre.");
+        Swal.fire({
+            title: "Por favor, ingrese su nombre.",
+            icon: "warning"
+        });
         return false;
     }
     if (!apellido || apellido.trim() === "") {
-        alert("Por favor, ingrese su apellido.");
+        Swal.fire({
+            title: "Por favor, ingrese su apellido.",
+            icon: "warning"
+        });
         return false;
     }
     if (!email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
-        alert("Por favor, ingrese un correo electrónico válido.");
+        Swal.fire({
+            title: "Por favor, ingrese un correo electrónico válido.",
+            icon: "warning"
+        });
         return false;
     }
     if (!comentario || comentario.trim() === "") {
-        alert("Por favor, ingrese un comentario.");
+        Swal.fire({
+            title: "Por favor, ingrese un comentario.",
+            icon: "warning"
+        });
         return false;
     }
 
