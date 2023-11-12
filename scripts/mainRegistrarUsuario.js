@@ -13,6 +13,9 @@ miFormulario.addEventListener("submit", (e) => {
       text: "sera reenviado al login automaticamente",
       icon: "success"
     });
+    setTimeout(() => {
+      window.location = "/pages/ingresar.html";
+    }, 2000);
     window.location = "/pages/ingresar.html";
   } else {
     Swal.fire({
