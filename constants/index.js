@@ -15,7 +15,6 @@ const recuperarListaEnStorage = () => {
 };
 
 let usuarios = recuperarListaEnStorage();
-//console.table(usuarios);
 
 const isExisteUsuario = (usuarios = [], identificador = "") => {
   return usuarios.some(
@@ -28,7 +27,6 @@ const getUsuario = (usuarios = [], identificador = "") => {
   return usuarios.find((unUsuario) => unUsuario.nombre === identificador);
 };
 
-// Gestión de sesión de usuario
 const USER_LOGED_KEY = "usuarioLogueda";
 const registrarInicio = (unUsuario) => {
   sessionStorage.setItem(USER_LOGED_KEY, JSON.stringify(unUsuario));
