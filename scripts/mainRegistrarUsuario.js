@@ -16,12 +16,38 @@ miFormulario.addEventListener("submit", (e) => {
     setTimeout(() => {
       window.location = "/pages/ingresar.html";
     }, 2000);
-    window.location = "/pages/ingresar.html";
   } else {
-    Swal.fire({
-      title: "¡Verifica los inputs ingresados!",
-      icon: "error"
-    });
+    !nombre.length > 0
+      ? Swal.fire({
+        title: "El Nombre de usuario es requerido.",
+        icon: "warning"
+      })
+      : !repetirNombre.length > 0
+        ? Swal.fire({
+          title: "Repetir nombre de usuario es requerido.",
+          icon: "warning"
+        })
+        : !nombre === repetirNombre
+          ? Swal.fire({
+            title: "El campo nombre de usuario y repetir nombre de usuario deben ser iguales.",
+            icon: "warning"
+          })
+          : !contrasena.length > 0
+            ? Swal.fire({
+              title: "La contraseña es requerida",
+              icon: "warning"
+            })
+            : !repetirContrasena.length > 0
+              ? Swal.fire({
+                title: "Repetir contraseña es requerida",
+                icon: "warning"
+              })
+              : !contrasena === repetirContrasena
+                ? Swal.fire({
+                  title: "El campo contraseña y repetir contraseña de usuario deben ser iguales",
+                  icon: "warning"
+                })
+                : false
   }
 
 });
