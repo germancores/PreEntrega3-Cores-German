@@ -1,55 +1,42 @@
+const URL_API = 'http://localhost:3000';
+
+const getUsersFromServer = async () => {
+  const response = await fetch(`${URL_API}/usuariosRegistrados`);
+  const data = await response.json();
+  return data;
+};
+
+const registerUserOnServer = async (usuario) => {
+  const response = await fetch(`${URL_API}/usuariosRegistrados`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(usuario),
+  });
+  const data = await response.json();
+  return data;
+};
+
 const miFormulario = document.getElementById("registerFormUser");
-miFormulario.addEventListener("submit", (e) => {
+miFormulario.addEventListener("submit", async (e) => {
   e.preventDefault();
   const nombre = document.getElementById("nombreUsuario").value.trim().toLowerCase();
   const repetirNombre = document.getElementById("repetirNombreUsuario").value.trim().toLowerCase();
   const contrasena = document.getElementById("contrasenaUsuario").value.trim();
   const repetirContrasena = document.getElementById("repetirContrasena").value.trim();
 
-  if (registrarUsuario(nombre, repetirNombre, contrasena, repetirContrasena)) {
+  if (await registrarUsuario(nombre, repetirNombre, contrasena, repetirContrasena)) {
     miFormulario.reset();
     Swal.fire({
       title: "¡Usuario registrado satisfactoriamente!",
-      text: "sera reenviado al login automaticamente",
+      text: "será redirigido al login automáticamente",
       icon: "success"
-    });
-    setTimeout(() => {
-      window.location = "/pages/ingresar.html";
-    }, 2000);
-  } else {
-    !nombre.length > 0
-      ? Swal.fire({
-        title: "El Nombre de usuario es requerido.",
-        icon: "warning"
-      })
-      : !repetirNombre.length > 0
-        ? Swal.fire({
-          title: "Repetir nombre de usuario es requerido.",
-          icon: "warning"
-        })
-        : !nombre === repetirNombre
-          ? Swal.fire({
-            title: "El campo nombre de usuario y repetir nombre de usuario deben ser iguales.",
-            icon: "warning"
-          })
-          : !contrasena.length > 0
-            ? Swal.fire({
-              title: "La contraseña es requerida",
-              icon: "warning"
-            })
-            : !repetirContrasena.length > 0
-              ? Swal.fire({
-                title: "Repetir contraseña es requerida",
-                icon: "warning"
-              })
-              : !contrasena === repetirContrasena
-                ? Swal.fire({
-                  title: "El campo contraseña y repetir contraseña de usuario deben ser iguales",
-                  icon: "warning"
-                })
-                : false
+    }).then(() => {
+        window.location.href = "/pages/ingresar.html";
+    })
+    
   }
-
 });
 
 const validarFormulario = (
@@ -104,7 +91,7 @@ const validarFormulario = (
   return true;
 };
 
-const registrarUsuario = (
+const registrarUsuario = async (
   nombre,
   repetirNombre,
   contrasena,
@@ -115,15 +102,23 @@ const registrarUsuario = (
     return false;
   }
 
-  if (isExisteUsuario(usuarios, nombre) ? Swal.fire({
-    title: "El nombre de usuario ingresado ya existe!",
-    icon: "warning"
-  }) : false) {
+  if (await isExisteUsuario(nombre)) {
+    Swal.fire({
+      title: "El nombre de usuario ingresado ya existe!",
+      icon: "warning"
+    });
     return false;
   }
 
   const unUsuario = new Usuario(nombre, contrasena);
-  usuarios.push(unUsuario);
-  actualizarListaEnStorage(usuarios);
+  await registerUserOnServer(unUsuario);
   return true;
+};
+
+const isExisteUsuario = async (identificador = "") => {
+  const usuarios = await getUsersFromServer();
+  return usuarios.some(
+    (unUsuario) =>
+      unUsuario.nombre.toLowerCase() === identificador.toLowerCase()
+  );
 };

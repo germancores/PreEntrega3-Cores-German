@@ -4,4 +4,4 @@ Este es un script JavaScript que permite al usuario llenar los inputs con los da
 
 ## Registro de usuario y Log in
 
-Este script permite que el usuario ingrese los datos que se solicitan en los inputs para crearse una cuenta en la pagina, todos los datos deben ser validos para que el registro sea exitoso, en caso contrario el registro no se efectuara. Si el registro es exitoso la pagina te rederigira automaticamente a la seccion de login para ingresar tus datos e iniciar sesion.
+Este script permite que el usuario ingrese los datos que se solicitan en los inputs para crearse una cuenta en la pagina, todos los datos deben ser validos para que el registro sea exitoso, en caso contrario el registro no se efectuara. Si el registro es exitoso la pagina te rederigira automaticamente luego de unos segundos de intervalo a la seccion de login para ingresar tus datos e iniciar sesion.
