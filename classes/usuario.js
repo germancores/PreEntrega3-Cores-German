@@ -1,4 +1,3 @@
-// Definición de la clase Usuario
 class Usuario {
   // Constructor que recibe un nombre y una contraseña para crear una instancia de Usuario.
   constructor(nombre, contrasena) {

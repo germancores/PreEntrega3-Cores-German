@@ -32,7 +32,8 @@ miFormulario.addEventListener("submit", async (e) => {
   // Intenta registrar al usuario y realiza acciones según el resultado.
   if (await registrarUsuario(nombre, repetirNombre, contrasena, repetirContrasena)) {
     miFormulario.reset();
-    // Muestra una alerta de éxito y redirige al usuario a la página de login.
+    // Muestra una alerta de éxito y redirige al usuario a la página de login. 
+    //Esta seccion presenta un error que no me aparece en consola ni en ninguna parte y nose como resolver ya que no encuentro el error. El error me impide la redireccion de la pagina
     Swal.fire({
       title: "¡Usuario registrado satisfactoriamente!",
       text: "será redirigido al login automáticamente",

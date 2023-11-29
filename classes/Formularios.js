@@ -1,4 +1,3 @@
-// Definición de la clase Formulario
 class Formulario {
   // Constructor que recibe nombre, apellido, email, y comentario para crear una instancia de Formulario.
   constructor(nombre, apellido, email, comentario) {
