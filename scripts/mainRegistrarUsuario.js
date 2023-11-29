@@ -98,31 +98,6 @@ const validarFormulario = (
   return true;
 };
 
-const registrarUsuario = async (
-  nombre,
-  repetirNombre,
-  contrasena,
-  repetirContrasena
-) => {
-  // Valida el formulario y muestra alertas en caso de errores.
-  const tieneErrores = validarFormulario(nombre, repetirNombre, contrasena, repetirContrasena);
-  if (!tieneErrores) {
-    return false;
-  }
-  // Verifica si el usuario ya existe y muestra una alerta en caso afirmativo.
-  if (await isExisteUsuario(nombre)) {
-    Swal.fire({
-      title: "El nombre de usuario ingresado ya existe!",
-      icon: "warning"
-    });
-    return false;
-  }
-  // Si pasa las validaciones, crea un objeto Usuario y lo registra en el servidor.
-  const unUsuario = new Usuario(nombre, contrasena);
-  await registerUserOnServer(unUsuario);
-  return true;
-};
-
 const isExisteUsuario = async (identificador = "") => {
   // Obtiene la lista de usuarios y verifica si hay alguno con el mismo nombre.
   const usuarios = await getUsersFromServer();

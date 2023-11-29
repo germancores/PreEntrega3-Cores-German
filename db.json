@@ -1,5 +1,18 @@
 {
   "usuariosRegistrados": [
-   
+    {
+      "nombre": "german",
+      "contrasena": "asdf123456",
+      "isLoged": false,
+      "session": [],
+      "id": 1
+    },
+    {
+      "nombre": "jose",
+      "contrasena": "grillo",
+      "isLoged": false,
+      "session": [],
+      "id": 2
+    }
   ]
 }

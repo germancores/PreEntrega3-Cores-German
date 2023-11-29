@@ -39,7 +39,7 @@ const getUsuario = async (identificador = "") => {
 };
 
 // Constante que define el nombre bajo el cual se almacenará el usuario logueado en el sessionStorage.
-const USER_LOGED_KEY = "usuarioLogueda";
+const USER_LOGED_KEY = "usuarioLoguedo";
 // Función asíncrona que registra el inicio de sesión de un usuario almacenándolo en el sessionStorage.
 const registrarInicio = async (unUsuario) => {
   sessionStorage.setItem(USER_LOGED_KEY, JSON.stringify(unUsuario));
@@ -48,4 +48,37 @@ const registrarInicio = async (unUsuario) => {
 // Función asíncrona que recupera el usuario logueado almacenado en el sessionStorage.
 const recuperarUsuarioLogueado = async () => {
   return JSON.parse(sessionStorage.getItem(USER_LOGED_KEY)) || false;
+};
+
+const registerUserOnLocalStorage = async (usuario) => {
+  // Agrega un nuevo usuario a la lista y actualiza el LocalStorage.
+  usuarios.push(usuario);
+  await actualizarListaEnStorage(usuarios);
+};
+
+// Modifica la función de registro para almacenar en LocalStorage.
+const registrarUsuario = async (
+  nombre,
+  repetirNombre,
+  contrasena,
+  repetirContrasena
+) => {
+  // Valida el formulario y muestra alertas en caso de errores.
+  const tieneErrores = validarFormulario(nombre, repetirNombre, contrasena, repetirContrasena);
+  if (!tieneErrores) {
+    return false;
+  }
+  // Verifica si el usuario ya existe y muestra una alerta en caso afirmativo.
+  if (await isExisteUsuario(nombre)) {
+    Swal.fire({
+      title: "El nombre de usuario ingresado ya existe!",
+      icon: "warning"
+    });
+    return false;
+  }
+  // Si pasa las validaciones, crea un objeto Usuario, lo registra en el servidor y en LocalStorage.
+  const unUsuario = new Usuario(nombre, contrasena);
+  await registerUserOnServer(unUsuario);
+  await registerUserOnLocalStorage(unUsuario);
+  return true;
 };

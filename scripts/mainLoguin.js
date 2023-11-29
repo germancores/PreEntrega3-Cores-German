@@ -1,5 +1,5 @@
 const miFormulario = document.getElementById("loginFormUser");
-miFormulario.addEventListener("submit", (e) => {
+miFormulario.addEventListener("submit", async (e) => {
   e.preventDefault();
   // Obtiene los valores del formulario.
   let nombre = document.getElementById("nombreUsuario").value;
@@ -15,8 +15,8 @@ miFormulario.addEventListener("submit", (e) => {
   }
 
   // Obtiene un usuario con el nombre proporcionado.
-  const unUsuario = getUsuario(usuarios, nombre);
-  console.log("--> usuario recuperado", unUsuario);
+  const unUsuario = await getUsuario(nombre);
+
   // Verifica si el usuario existe.
   if (!unUsuario) {
     Swal.fire({
@@ -27,7 +27,7 @@ miFormulario.addEventListener("submit", (e) => {
   }
 
   // Verifica si la contraseña ingresada es correcta.
-  if (!unUsuario.isPassword(contrasena)) {
+  if (!validarContrasena(contrasena, unUsuario.contrasena)) {
     Swal.fire({
       title: "La contraseña ingresada no es correcta",
       icon: "error"
@@ -37,29 +37,26 @@ miFormulario.addEventListener("submit", (e) => {
 
   // Marca al usuario como autenticado, registra el inicio de sesión y redirige a la página principal.
   unUsuario.isLoged = true;
-  registrarInicio(unUsuario);
-  window.location = "/index.html"
+  await registrarInicio(unUsuario);
+  window.location = "/index.html";
 });
-
 
 const validarFormulario = (nombre, contrasena) => {
   // Realiza validaciones y muestra alertas en caso de errores.
   // Retorna true si el formulario es válido, false si hay errores.
-  if (nombre.length == 0) {
+  if (nombre.length == 0 || contrasena.length == 0) {
     Swal.fire({
-      title: "El Nombre de usuario es requerido.",
-      icon: "warning"
-    });
-    return false;
-  }
-
-  if (contrasena.length == 0) {
-    Swal.fire({
-      title: "La contraseña es requerida",
+      title: "Debes completar todos los campos",
       icon: "warning"
     });
     return false;
   }
 
   return true;
+};
+
+const validarContrasena = (contrasenaIngresada, contrasenaUsuario) => {
+  // Realiza la validación de la contraseña.
+  // Retorna true si la contraseña es correcta, false si no lo es.
+  return contrasenaIngresada === contrasenaUsuario;
 };
