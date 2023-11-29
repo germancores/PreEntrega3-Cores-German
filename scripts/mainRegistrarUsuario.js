@@ -1,12 +1,14 @@
 const URL_API = 'http://localhost:3000';
 
 const getUsersFromServer = async () => {
+  // Obtiene la lista de usuarios registrados desde el servidor.
   const response = await fetch(`${URL_API}/usuariosRegistrados`);
   const data = await response.json();
   return data;
 };
 
 const registerUserOnServer = async (usuario) => {
+  // Registra un nuevo usuario en el servidor mediante una solicitud POST.
   const response = await fetch(`${URL_API}/usuariosRegistrados`, {
     method: 'POST',
     headers: {
@@ -21,21 +23,24 @@ const registerUserOnServer = async (usuario) => {
 const miFormulario = document.getElementById("registerFormUser");
 miFormulario.addEventListener("submit", async (e) => {
   e.preventDefault();
+  // Obtiene los valores del formulario.
   const nombre = document.getElementById("nombreUsuario").value.trim().toLowerCase();
   const repetirNombre = document.getElementById("repetirNombreUsuario").value.trim().toLowerCase();
   const contrasena = document.getElementById("contrasenaUsuario").value.trim();
   const repetirContrasena = document.getElementById("repetirContrasena").value.trim();
 
+  // Intenta registrar al usuario y realiza acciones según el resultado.
   if (await registrarUsuario(nombre, repetirNombre, contrasena, repetirContrasena)) {
     miFormulario.reset();
+    // Muestra una alerta de éxito y redirige al usuario a la página de login.
     Swal.fire({
       title: "¡Usuario registrado satisfactoriamente!",
       text: "será redirigido al login automáticamente",
       icon: "success"
     }).then(() => {
-        window.location.href = "/pages/ingresar.html";
+      window.location.href = "/pages/ingresar.html";
     })
-    
+
   }
 });
 
@@ -45,6 +50,8 @@ const validarFormulario = (
   contrasena = "",
   repetirContrasena = ""
 ) => {
+  // Realiza diversas validaciones y muestra alertas en caso de errores.
+  // Retorna true si el formulario es válido, false si hay errores.
   const isNombreValido = nombre.length > 0;
   const isRepetirNombreValido = repetirNombre.length > 0;
   const areNombresIguales = nombre === repetirNombre;
@@ -97,11 +104,12 @@ const registrarUsuario = async (
   contrasena,
   repetirContrasena
 ) => {
+  // Valida el formulario y muestra alertas en caso de errores.
   const tieneErrores = validarFormulario(nombre, repetirNombre, contrasena, repetirContrasena);
   if (!tieneErrores) {
     return false;
   }
-
+  // Verifica si el usuario ya existe y muestra una alerta en caso afirmativo.
   if (await isExisteUsuario(nombre)) {
     Swal.fire({
       title: "El nombre de usuario ingresado ya existe!",
@@ -109,13 +117,14 @@ const registrarUsuario = async (
     });
     return false;
   }
-
+  // Si pasa las validaciones, crea un objeto Usuario y lo registra en el servidor.
   const unUsuario = new Usuario(nombre, contrasena);
   await registerUserOnServer(unUsuario);
   return true;
 };
 
 const isExisteUsuario = async (identificador = "") => {
+  // Obtiene la lista de usuarios y verifica si hay alguno con el mismo nombre.
   const usuarios = await getUsersFromServer();
   return usuarios.some(
     (unUsuario) =>

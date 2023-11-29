@@ -15,6 +15,7 @@ console.table(formularios);
 const miFormulario = document.getElementById("formulario");
 miFormulario.addEventListener("submit", (e) => {
     e.preventDefault();
+    // Obtención de valores del formulario.
     let nombre = document
         .getElementById("exampleFormControlInput1")
         .value.trim()
@@ -28,29 +29,34 @@ miFormulario.addEventListener("submit", (e) => {
         .getElementById("exampleFormControlTextarea1")
         .value.trim();
 
+    // Validación del formulario y manejo de la respuesta.
     if (validarFormulario(nombre, apellido, email, comentario)) {
+        // Reseteo del formulario.
         miFormulario.reset();
+        // Pregunta al usuario si desea enviar el formulario.
         Swal.fire({
             title: "¿Seguro que desea enviar este formulario?",
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: "Si, enviar",
             denyButtonText: `No mejor no`
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
+                // Muestra un mensaje de éxito si el usuario confirma el envío.
                 Swal.fire({
                     title: "El formulario se ha enviado con exito",
                     icon: "success"
                 });
             } else if (result.isDenied) {
+                // Muestra un mensaje de error si el usuario niega el envío.
                 Swal.fire({
                     title: "¡El formulario no se ha enviado!",
                     text: "Asegurate de ingresar los inputs correctamente",
                     icon: "error"
                 });
             }
-          });
-}
+        });
+    }
 
 });
 
@@ -60,6 +66,9 @@ const validarFormulario = (
     email = "",
     comentario = ""
 ) => {
+    // Validación de cada campo y muestra de alertas en caso de errores.
+    // Se crea un nuevo objeto Formulario y se agrega a la lista almacenada.
+    // Retorna true si la validación es exitosa, false si hay errores.
     if (!nombre || nombre.trim() === "") {
         Swal.fire({
             title: "Por favor, ingrese su nombre.",
@@ -89,6 +98,7 @@ const validarFormulario = (
         return false;
     }
 
+    // Si la validación es exitosa, se crea un nuevo objeto Formulario y se agrega a la lista almacenada.
     let unFormulario = new Formulario(nombre, apellido, email, comentario);
     formularios.push(unFormulario);
     actualizarListaEnStorage(formularios);
