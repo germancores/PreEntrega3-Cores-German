@@ -26,8 +26,8 @@ miFormulario.addEventListener("submit", async (e) => {
   // Obtiene los valores del formulario.
   const nombre = document.getElementById("nombreUsuario").value.trim().toLowerCase();
   const repetirNombre = document.getElementById("repetirNombreUsuario").value.trim().toLowerCase();
-  const contrasena = document.getElementById("contrasenaUsuario").value.trim();
-  const repetirContrasena = document.getElementById("repetirContrasena").value.trim();
+  const contrasena = document.getElementById("contrasenaUsuario").value.trim().toLowerCase();
+  const repetirContrasena = document.getElementById("repetirContrasena").value.trim().toLowerCase();
 
   // Intenta registrar al usuario y realiza acciones según el resultado.
   if (await registrarUsuario(nombre, repetirNombre, contrasena, repetirContrasena)) {

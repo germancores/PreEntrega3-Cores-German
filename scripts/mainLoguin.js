@@ -2,8 +2,8 @@ const miFormulario = document.getElementById("loginFormUser");
 miFormulario.addEventListener("submit", async (e) => {
   e.preventDefault();
   // Obtiene los valores del formulario.
-  let nombre = document.getElementById("nombreUsuario").value;
-  let contrasena = document.getElementById("contrasena").value;
+  let nombre = document.getElementById("nombreUsuario").value.trim().toLowerCase();
+  let contrasena = document.getElementById("contrasena").value.trim().toLowerCase();
 
   // Valida el formulario y muestra alerta en caso de errores.
   if (!validarFormulario(nombre, contrasena)) {
